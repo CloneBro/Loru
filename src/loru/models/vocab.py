@@ -32,6 +32,7 @@ DEFAULT_GLOSS = [
     "know",
     "big",
     "small",
+    "welcome",
 ]
 
 
