@@ -78,6 +78,23 @@ def infer_stream(
     console.print_json(data=stream_glosses(parts))
 
 
+@infer_app.command("extract")
+def infer_extract(
+    gloss: str = typer.Option("hello", "--gloss", "-g"),
+    out: Path | None = typer.Option(None, "--out", "-o"),
+    source: Path | None = typer.Option(None, "--source", "-s", exists=True, dir_okay=False),
+    frames: int = typer.Option(8, "--frames", "-n", min=1, max=60),
+) -> None:
+    """Extract/write landmark sample JSON (MediaPipe if available, else synthetic)."""
+    from loru.config import OUT_DIR
+    from loru.infer.extract import extract_landmarks, write_extract
+
+    payload = extract_landmarks(source, gloss=gloss, frames=frames)
+    path = out or (OUT_DIR / f"extract_{gloss}.json")
+    write_extract(payload, path)
+    console.print(f"[green]extract[/green] {path} frames={len(payload.get('frames') or [])} via={payload.get('extractor')}")
+
+
 @data_app.command("list")
 def data_list() -> None:
     files = list_sample_files()
