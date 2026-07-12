@@ -37,6 +37,7 @@ DEFAULT_GLOSS = [
     "wait",
     "today",
     "understand",
+    "again",
 ]
 
 

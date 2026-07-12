@@ -41,6 +41,7 @@ TEMPLATES = {
     "wait": "Please wait.",
     "today": "Today.",
     "understand": "I understand.",
+    "again": "Again.",
 }
 
 
