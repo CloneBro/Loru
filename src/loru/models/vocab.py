@@ -33,6 +33,7 @@ DEFAULT_GLOSS = [
     "big",
     "small",
     "welcome",
+    "maybe",
 ]
 
 
