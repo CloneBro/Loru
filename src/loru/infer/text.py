@@ -40,6 +40,7 @@ TEMPLATES = {
     "maybe": "Maybe.",
     "wait": "Please wait.",
     "today": "Today.",
+    "understand": "I understand.",
 }
 
 
