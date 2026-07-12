@@ -42,6 +42,7 @@ DEFAULT_GLOSS = [
     "finish",
     "what",
     "where",
+    "how",
 ]
 
 

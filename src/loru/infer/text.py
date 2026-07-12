@@ -46,6 +46,7 @@ TEMPLATES = {
     "finish": "I am finished.",
     "what": "What?",
     "where": "Where?",
+    "how": "How?",
 }
 
 
