@@ -44,6 +44,7 @@ TEMPLATES = {
     "again": "Again.",
     "more": "I want more.",
     "finish": "I am finished.",
+    "what": "What?",
 }
 
 

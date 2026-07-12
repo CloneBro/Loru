@@ -40,6 +40,7 @@ DEFAULT_GLOSS = [
     "again",
     "more",
     "finish",
+    "what",
 ]
 
 
