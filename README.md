@@ -9,6 +9,19 @@
 
 Built under the [mergeos-bounties](https://github.com/mergeos-bounties) org so delivery can be funded as MergeOS tasks with MRG payouts.
 
+
+## Screenshots
+
+Real captures from running the product demo (Loru).
+
+![Sign → text → voice pipeline](docs/screenshots/demo-sign-to-voice.png)
+
+*Sign → text → voice pipeline*
+
+![Gloss sample catalog](docs/screenshots/demo-samples.png)
+
+*Gloss sample catalog*
+
 ## Stack
 
 - Python 3.11+
