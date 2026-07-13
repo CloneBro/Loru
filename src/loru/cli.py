@@ -95,6 +95,37 @@ def infer_extract(
     console.print(f"[green]extract[/green] {path} frames={len(payload.get('frames') or [])} via={payload.get('extractor')}")
 
 
+@data_app.command("vocab")
+def data_vocab() -> None:
+    """List demo gloss vocabulary with indices."""
+    table = Table(title=f"DEFAULT_GLOSS ({len(DEFAULT_GLOSS)})")
+    table.add_column("#", justify="right")
+    table.add_column("Gloss")
+    for i, g in enumerate(DEFAULT_GLOSS):
+        table.add_row(str(i), g)
+    console.print(table)
+
+
+@data_app.command("sentence")
+def data_sentence(
+    glosses: str = typer.Option(
+        "hello thanks",
+        "--glosses",
+        "-g",
+        help="Space-separated glosses → natural-language sentence",
+    ),
+) -> None:
+    """Compose a sentence from multiple glosses (offline templates)."""
+    parts = [g for g in glosses.replace(",", " ").split() if g.strip()]
+    console.print_json(
+        data={
+            "glosses": parts,
+            "sentence": multi_gloss_to_sentence(parts),
+            "single": {g: gloss_to_sentence(g) for g in parts[:8]},
+        }
+    )
+
+
 @data_app.command("list")
 def data_list() -> None:
     files = list_sample_files()
