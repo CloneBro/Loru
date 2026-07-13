@@ -45,6 +45,7 @@ DEFAULT_GLOSS = [
     "how",
     "why",
     "family",
+    "work",
 ]
 
 
