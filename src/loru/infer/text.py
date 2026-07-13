@@ -47,6 +47,7 @@ TEMPLATES = {
     "what": "What?",
     "where": "Where?",
     "how": "How?",
+    "why": "Why?",
 }
 
 
