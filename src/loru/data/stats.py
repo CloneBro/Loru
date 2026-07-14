@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Optional
 
@@ -9,7 +8,6 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 
-from loru.config import SAMPLES_DIR
 from loru.data.loader import list_sample_files, load_sequence
 
 
@@ -113,8 +111,7 @@ def print_summary(stats: list[dict], outliers: list[dict]) -> None:
     
     frame_counts = [s['frame_count'] for s in stats]
     
-    console.print("
-[bold]Summary Statistics[/bold]")
+    console.print("[bold]Summary Statistics[/bold]")
     console.print(f"  Total sequences: {len(stats)}")
     console.print(f"  Frame count range: {min(frame_counts)} - {max(frame_counts)}")
     console.print(f"  Mean frames: {np.mean(frame_counts):.1f}")
