@@ -165,6 +165,34 @@ def data_coverage() -> None:
     console.print(f"[dim]{have}/{len(DEFAULT_GLOSS)} glosses have samples[/dim]")
 
 
+@data_app.command("heatmap")
+def data_heatmap() -> None:
+    """ASCII heatmap showing which DEFAULT_GLOSS entries lack samples."""
+    files = {p.stem for p in list_sample_files()}
+    # Group glosses by first letter for a compact heatmap
+    groups: dict[str, list[tuple[int, str, bool]]] = {}
+    for i, g in enumerate(DEFAULT_GLOSS):
+        key = g[0].upper()
+        groups.setdefault(key, []).append((i, g, g in files))
+    console.print("[bold]Gloss Coverage Heatmap[/bold]")
+    console.print("[dim]█ = has sample, · = missing[/dim]\n")
+    total_have = 0
+    for letter in sorted(groups):
+        items = groups[letter]
+        row = ""
+        for _, gloss, has_sample in items:
+            row += "[green]█[/green] " if has_sample else "[red]·[/red] "
+            if has_sample:
+                total_have += 1
+        missing = sum(1 for _, _, h in items if not h)
+        console.print(f" {letter}  {row}  ({len(items) - missing}/{len(items)})")
+    console.print(f"\n[dim]Total: {total_have}/{len(DEFAULT_GLOSS)} glosses have samples[/dim]")
+    # Show missing glosses
+    missing_glosses = [g for g in DEFAULT_GLOSS if g not in files]
+    if missing_glosses:
+        console.print(f"\n[yellow]Missing glosses:[/yellow] {', '.join(missing_glosses[:10])}" + (f" +{len(missing_glosses)-10} more" if len(missing_glosses) > 10 else ""))
+
+
 @data_app.command("export-csv")
 def data_export_csv(
     out: Path = typer.Option(None, "--out", "-o", help="Output CSV file path. Default: data/out/vocab_export.csv"),
