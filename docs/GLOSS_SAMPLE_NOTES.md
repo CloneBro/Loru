@@ -11,3 +11,5 @@ Cycle 2026-07-14i: outside gloss with unique synthetic frames (hash-offset spira
 Cycle 2026-07-15j: inside gloss with unique synthetic frames.
 
 Cycle 2026-07-15k: night gloss with unique synthetic frames.
+
+Cycle 2026-07-15l: morning gloss with unique synthetic frames.
