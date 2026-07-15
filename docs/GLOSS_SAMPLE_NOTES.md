@@ -48,3 +48,5 @@ Cycle 2026-07-15q: never gloss with unique synthetic frames.
 Cycle 2026-07-15r: sometimes gloss with unique synthetic frames.
 
 Cycle 2026-07-15w: family gloss with unique synthetic frames.
+
+Cycle 2026-07-15x: friend gloss with unique synthetic frames.
