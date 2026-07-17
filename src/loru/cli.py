@@ -27,11 +27,13 @@ samples_app = typer.Typer(help="Browse local landmark samples")
 infer_app = typer.Typer(help="Inference (sign→text / sign→voice)")
 train_app = typer.Typer(help="Training")
 eval_app = typer.Typer(help="Evaluation")
+gloss_app = typer.Typer(help="Inspect and compare gloss samples")
 app.add_typer(data_app, name="data")
 app.add_typer(samples_app, name="samples")
 app.add_typer(infer_app, name="infer")
 app.add_typer(train_app, name="train")
 app.add_typer(eval_app, name="eval")
+app.add_typer(gloss_app, name="gloss")
 console = Console()
 
 
@@ -237,6 +239,21 @@ def data_list() -> None:
         summary = sequence_summary(path)
         table.add_row(path.name, summary["gloss"], str(summary["frames"]))
     console.print(table)
+
+
+@gloss_app.command("compare")
+def gloss_compare(
+    sample_a: Path = typer.Option(..., "--a", exists=True, dir_okay=False),
+    sample_b: Path = typer.Option(..., "--b", exists=True, dir_okay=False),
+) -> None:
+    """Compare frame counts and a crude time-aligned landmark distance."""
+    from loru.data.compare import compare_gloss_samples
+
+    try:
+        console.print_json(data=compare_gloss_samples(sample_a, sample_b))
+    except ValueError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
 
 
 @samples_app.command("list")
