@@ -80,3 +80,5 @@ Cycle 2026-07-16m: sorry gloss with unique synthetic frames.
 Cycle 2026-07-16n: yes gloss with unique synthetic frames.
 
 Cycle 2026-07-16o: no gloss with unique synthetic frames.
+
+Cycle 2026-07-16p: yes gloss with unique synthetic frames.
